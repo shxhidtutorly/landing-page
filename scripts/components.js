@@ -1,5 +1,3 @@
-
-
 class Dropdown {
     constructor(selector, onChange) {
         this.dropdown = document.querySelector(selector)
@@ -73,7 +71,7 @@ class Prompt{
 
         this.promptWindow = this.playground.querySelector(".prompt-container")
         
-        this.chatModel = "gpt 4o"
+        this.chatModel = "gpt-4"
 
         this.promptList = []
 
@@ -98,7 +96,7 @@ class Prompt{
         const text = document.createElement("div")
 
         text.classList.add("tw-w-fit", "tw-ml-auto", "tw-p-2", "tw-rounded-xl", 
-                            "tw-bg-gray-100", "dark:tw-bg-[#171717]")
+                            "tw-bg-purple-100", "dark:tw-bg-purple-900", "tw-text-purple-900", "dark:tw-text-purple-100")
         text.innerText = msg
 
         const promptELement = `
@@ -119,14 +117,14 @@ class Prompt{
     answer(){
 
         let msg = {
-            "gpt 4o": "Hello from Gpt 4o, add 3 prompts",
-            "gemini": "Hello from Gemini, add 3 prompts",
-            "llama 3": "Hello from Meta Llama 3, add 3 prompts",
-            "claude": "Hello from Claude, add 3 prompts",
-        }[this.chatModel]
+            "gpt-4": "Hello! I'm your AI tutor powered by GPT-4. I can help you create summaries, flashcards, and quizzes from your study materials. Try pasting some content above!",
+            "gemini": "Hi there! I'm your AI study assistant using Google's Gemini. I can transform your notes into interactive learning materials. What would you like to study today?",
+            "claude": "Greetings! I'm Claude, your AI learning companion. I excel at breaking down complex topics and creating personalized study aids. How can I help you learn better?",
+        }[this.chatModel] || "Hello! I'm your AI tutor. I can help you study more effectively with personalized summaries, flashcards, and quizzes."
 
         const text = document.createElement("div")
-        text.classList.add("tw-w-fit", "tw-mr-auto", "tw-p-2")
+        text.classList.add("tw-w-fit", "tw-mr-auto", "tw-p-2", "tw-rounded-xl", 
+                          "tw-bg-gray-100", "dark:tw-bg-gray-800")
         text.innerText = msg
 
         const promptELement = `
@@ -135,6 +133,10 @@ class Prompt{
             </div>
         `
         this.promptWindow.innerHTML += promptELement
+
+        setTimeout(() => {
+            this.promptWindow.scrollTop = this.promptWindow.scrollHeight
+        }, 150)
 
     }
 

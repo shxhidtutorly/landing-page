@@ -7,13 +7,13 @@
     --bg-color: #ffffff;
 
     --btn-color: #fdfdfd;/* button color*/
-    --btn-bg: #000;/* button bg color*/
+    --btn-bg: #7c3aed;/* button bg color - changed to purple */
 
     
     --header-link-hover: #000000;
     --header-link-hover-bg: #bababa36;
 
-    --input-hover-bd-color: #232323;
+    --input-hover-bd-color: #7c3aed;
     
     --dropdown-bg: #f3f4f6;
     --dropdown-hover-bg: #dddddd84;
@@ -35,15 +35,15 @@
 
 .tw-dark {
     --primary-text-color: #fff;
-    --bg-color: #000000;
+    --bg-color: #0a0a0a;
 
-    --btn-color: #000000;/* button color*/
-    --btn-bg: #ffffff;/* button bg color*/
+    --btn-color: #ffffff;/* button color*/
+    --btn-bg: #7c3aed;/* button bg color - kept purple */
 
     --header-link-hover: #ffffff;
     --header-link-hover-bg: #8a8a8a5e;
 
-    --input-hover-bd-color: #f8f8f8;
+    --input-hover-bd-color: #a855f7;
 
     --dropdown-bg: #171717;
     --dropdown-hover-bg: #2d2d2ddb;
@@ -58,7 +58,7 @@
 
     --header-bg: #232323a5;
 
-    --hero-gradient: #000;
+    --hero-gradient: #0a0a0a;
     --hero-bg-img: url("../assets/images/background/dots.svg");
 
   }
@@ -143,8 +143,7 @@ hr{
 
 
 .gradient-text{
-    background: rgb(215,215,215);
-    background: linear-gradient(90deg, rgba(215,215,215,1) 18%, rgba(136,136,136,1) 71%);
+    background: linear-gradient(90deg, #7c3aed 18%, #a855f7 71%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -182,10 +181,13 @@ hr{
     align-items: center;
     display: flex;
     cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .btn:hover{
-
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
 }
 
 .btn:disabled{
@@ -255,6 +257,9 @@ hr{
 .dropdown-menu li {
     padding: 8px 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .dropdown-menu li:hover {
@@ -306,13 +311,13 @@ hr{
     height: 100%;
     border-radius: inherit; 
     /* background: linear-gradient(#6366f1 23%, rgba(124,190,255,0) 87%); */
-    background-color: #6366f1;
+    background-color: #7c3aed;
     background-repeat: no-repeat;
     /* background-size: 200% 200%; */
     background-position: 0% 0%;
     filter: blur(1.5rem);
     opacity: 0.8;
-    box-shadow: inset 0px 0px 20px 5px #6366f1;
+    box-shadow: inset 0px 0px 20px 5px #7c3aed;
     /* transform: rotate(90deg); */
     z-index: -2;
     pointer-events: none;
@@ -343,6 +348,7 @@ hr{
     width: fit-content;
     color: var(--footer-link);
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 .footer-link:hover{

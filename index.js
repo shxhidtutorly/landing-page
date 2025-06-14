@@ -55,13 +55,17 @@ function responsive() {
 
     if (window.innerWidth > RESPONSIVE_WIDTH) {
         collapseHeaderItems.style.height = ""
-        navToggle.addEventListener("mouseenter", openNavDropdown)
-        navToggle.addEventListener("mouseleave", navMouseLeave)
+        if (navToggle) {
+            navToggle.addEventListener("mouseenter", openNavDropdown)
+            navToggle.addEventListener("mouseleave", navMouseLeave)
+        }
 
     } else {
         isHeaderCollapsed = true
-        navToggle.removeEventListener("mouseenter", openNavDropdown)
-        navToggle.removeEventListener("mouseleave", navMouseLeave)
+        if (navToggle) {
+            navToggle.removeEventListener("mouseenter", openNavDropdown)
+            navToggle.removeEventListener("mouseleave", navMouseLeave)
+        }
     }
 }
 responsive()
@@ -104,14 +108,12 @@ function updateToggleModeBtn(){
 
 const promptWindow =  new Prompt("#pixa-playground")
 const promptForm = document.querySelector("#prompt-form")
-const promptInput = promptForm.querySelector("input[name='prompt']")
+const promptInput = promptForm.querySelector("textarea[name='prompt']")
 
 const MAX_PROMPTS = 3
 
 promptForm.addEventListener("submit", (event) => {
     event.preventDefault()
-
-    // window.open("https://github.com/PaulleDemon", "_blank")
 
     if (promptWindow.promptList.length >= MAX_PROMPTS)
         return false
@@ -125,7 +127,7 @@ promptForm.addEventListener("submit", (event) => {
         signUpPrompt.classList.add("tw-scale-100")
         signUpPrompt.classList.remove("tw-scale-0")
 
-        promptForm.querySelectorAll("input").forEach(e => {e.disabled = true})
+        promptForm.querySelectorAll("input, textarea").forEach(e => {e.disabled = true})
     }
 
     return false
@@ -135,8 +137,10 @@ const dropdowns = document.querySelectorAll('.dropdown')
 dropdowns.forEach(dropdown => new Dropdown(`#${dropdown.id}`, promptWindow.setAIModel))
 
 
-navToggle.addEventListener("click", toggleNavDropdown)
-navDropdown.addEventListener("mouseleave", closeNavDropdown)
+if (navToggle && navDropdown) {
+    navToggle.addEventListener("click", toggleNavDropdown)
+    navDropdown.addEventListener("mouseleave", closeNavDropdown)
+}
 
 function toggleNavDropdown(){
 
@@ -207,10 +211,10 @@ function closeVideo(){
  */
 
 const typed = new Typed('#prompts-sample', {
-    strings: ["How to solve a rubik's cube? Step by step guide", 
-                "What's Pixa playground?", 
-                "How to build an AI SaaS App?", 
-                "How to integrate Pixa API?"],
+    strings: ["Explain quantum physics in simple terms", 
+                "Create flashcards from my biology notes", 
+                "Generate a quiz on World War II", 
+                "Summarize this research paper"],
     typeSpeed: 80,
     smartBackspace: true, 
     loop: true,
